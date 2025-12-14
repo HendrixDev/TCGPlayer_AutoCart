@@ -3,8 +3,13 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TCGPlayer_AutoCart;
 
+var deckPath = Path.Combine("Files", "decklist.txt");
+var setPath = Path.Combine("Files", "setlist.txt");
 
-var deckList = DeckParser.ParseDecklist("C:\\Users\\m374l\\source\\repos\\TCGPlayer_AutoCart\\TCGPlayer_AutoCart\\decklist.txt");
+
+var deckList = DeckParser.ParseDecklist(deckPath);
+var setList = SetParser.ParseSetList(setPath);
+
 
 //using IWebDriver driver = new ChromeDriver();
 
