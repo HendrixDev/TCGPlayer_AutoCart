@@ -1,4 +1,4 @@
-Pokémon: 12
+Pokémon: 13
 2 Cynthia's Gible DRI 102
 1 Toedscool SCR 17
 1 Cynthia's Spiritomb DRI 129
@@ -6,11 +6,12 @@ Pokémon: 12
 1 Cynthia's Garchomp ex DRI 215
 2 Cynthia's Roserade DRI 184
 1 Cynthia's Gabite DRI 103 PH
-2 Cynthia's Gible DRI 102 PH
+1 Cynthia's Gible DRI 102 PH
 2 Cynthia's Gabite DRI 103
 2 Cynthia's Roselia DRI 7
 2 Cynthia's Garchomp ex DRI 232
 1 Toedscruel PAR 17
+1 Cynthia's Gible SVALT 176
 
 Trainer: 17
 3 Buddy-Buddy Poffin TWM 223
