@@ -14,15 +14,14 @@ using IWebDriver driver = new ChromeDriver();
 
 try
 {
-    // Navigate to the desired URL
     driver.Navigate().GoToUrl("https://www.tcgplayer.com/");
 
-    Thread.Sleep(2000); // Wait for 5 seconds to ensure the page loads
-
+    Thread.Sleep(2000);
 
     foreach (var card in deckList)
     {
         Card currentCard = card.card;
+        int quantityToAddToCart = card.quantity;
 
         if (string.IsNullOrEmpty(currentCard.SetCode))
         {
@@ -49,26 +48,23 @@ try
         Thread.Sleep(1000);
         searchBox.SendKeys(Keys.Enter);
         Thread.Sleep(1000);
-        searchBox.SendKeys(Keys.Control + "a");
-        Thread.Sleep(500);
-        searchBox.SendKeys(Keys.Delete);
+
+        //find the node that matches the current cards card num
+        string leftPadded = currentCard.CardNum.ToString().PadLeft(3, '0');
+        string cardNumberToMatch = "#" + leftPadded;
+        ClickSpanContaining(cardNumberToMatch);
+        Thread.Sleep(2000);
+
+        //TODO: write logic to add card to cart based on quantity
+
         Thread.Sleep(1000);
     }
 
-    
 
-    //click search button
-    //driver.FindElement(By.Id("search-button")).Click();
-
-    //hit enter key to search
-
-
+    Console.WriteLine("Program has finished, press any key to exit...");
     Console.ReadKey();
     //Console.WriteLine("Page Title: " + driver.Title);
     //Console.WriteLine("Current URL: " + driver.Url);
-
-    // Optional: Keep the browser open for a few seconds to see the result
-    //Thread.Sleep(5000);
 }
 catch (Exception ex)
 {
@@ -77,9 +73,15 @@ catch (Exception ex)
 finally
 {
     // Close the browser session
-    //driver.Quit();
+    driver.Quit();
 }
 
+void ClickSpanContaining(string cardNumToMatch)
+{
+    var xpath = $"//span[contains(text(), '{cardNumToMatch}')]";
+    var element = driver.FindElement(By.XPath(xpath));
+    element.Click();
+}
 
 
 
